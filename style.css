@@ -4,25 +4,21 @@ body {
   font-family: "Lexend", sans-serif;
   background: linear-gradient(45deg, #000000, #222122);
   color: white;
-  display: flex;
+  display: flex; /* ensures sidebar + main align horizontally */
 }
 
 /* Sidebar */
 .sidebar {
-  width: 280px;
+  width: 280px; /* expanded */
+  min-width: 60px; /* safe minimum width */
   background-color: rgb(31, 29, 29);
-  padding: 20px;
+  padding: 20px 10px;
   border-right: 2px solid #c7c7c7;
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  /* animation */
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100%;
-  transition: transform 0.3s ease;
+  transition: width 0.3s ease;
+  overflow: hidden; /* hide text when collapsed */
 }
 
 #HouseAidLogo {
@@ -76,6 +72,7 @@ body {
   text-align: center;
   border-radius: 6px;
   transition: 0.3s;
+  white-space: nowrap; /* prevent wrapping */
 }
 
 .sidebar a:hover {
@@ -86,6 +83,7 @@ body {
 .main {
   flex: 1;
   padding: 20px;
+  transition: margin 0.3s ease;
 }
 #footer{
   border-style: hidden;
@@ -95,6 +93,11 @@ body {
 .sidebar.hidden {
   transform: translateX(-100%);
 }
+.sidebar.collapsed {
+  width: 60px; /* minimized like a thin bar */
+  padding: 20px 5px; /* tighter padding */
+}
+
 
 /* Toggle button */
 .toggle-btn {
